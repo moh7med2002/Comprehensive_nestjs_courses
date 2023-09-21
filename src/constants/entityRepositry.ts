@@ -10,3 +10,4 @@ export const hintRepositry = 'HINT_REPOSITORY';
 export const studentCourseRepositry = 'STUDENT_Course_REPOSITORY';
 export const quizRepositry = 'QUIZ_REPOSITORY';
 export const questionRepositry = 'QUESTION_REPOSITORY';
+export const answerRepositry = 'ANSWER_REPOSITORY';

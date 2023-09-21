@@ -1,5 +1,5 @@
 export type tokenPayload = {
   role: string;
-  userId: string;
+  userId: number;
   iat: number;
 };

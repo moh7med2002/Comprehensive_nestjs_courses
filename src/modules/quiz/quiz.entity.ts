@@ -5,8 +5,10 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
+  HasMany,
 } from 'sequelize-typescript';
 import { Course } from '../course/course.entity';
+import { Question } from '../queston/question.entity';
 
 @Table
 export class Quiz extends Model {
@@ -28,4 +30,7 @@ export class Quiz extends Model {
 
   @BelongsTo(() => Course)
   course: Course;
+
+  @HasMany(() => Question)
+  questions: Question[];
 }

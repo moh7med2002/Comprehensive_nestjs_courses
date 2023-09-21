@@ -1,4 +1,4 @@
-import { Sequelize } from 'sequelize-typescript';
+import { days } from 'src/constants/days';
 import { Admin } from 'src/modules/admin/admin.entity';
 import { Category } from 'src/modules/category/category.entity';
 import { Course } from 'src/modules/course/course.entity';
@@ -10,19 +10,14 @@ import { Media } from 'src/modules/media/media.entity';
 import { Quiz } from 'src/modules/quiz/quiz.entity';
 import { Student } from 'src/modules/student/student.entity';
 import { StudentCourse } from 'src/modules/studentCourse/studentCourseentity';
+import { sequelize } from './connection';
+import { Question } from 'src/modules/queston/question.entity';
+import { Answer } from 'src/modules/answer/answer.entity';
 
 export const databaseProviders = [
   {
     provide: 'SEQUELIZE',
     useFactory: async () => {
-      const sequelize = new Sequelize({
-        dialect: 'mysql',
-        host: 'localhost',
-        port: 3306,
-        username: 'root',
-        password: '059283805928388',
-        database: 'education_nest',
-      });
       sequelize.addModels([
         Admin,
         Student,
@@ -35,8 +30,14 @@ export const databaseProviders = [
         Hint,
         StudentCourse,
         Quiz,
+        Question,
+        Answer,
       ]);
-      await sequelize.sync({ force: true });
+      await sequelize.sync({ alter: false });
+      const existingDaysCount = await Day.count();
+      if (existingDaysCount === 0) {
+        await Day.bulkCreate(days);
+      }
       return sequelize;
     },
   },

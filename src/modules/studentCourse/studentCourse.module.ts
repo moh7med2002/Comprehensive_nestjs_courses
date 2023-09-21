@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { studentCourseRepositry } from 'src/constants/entityRepositry';
 import { StudentCourse } from './studentCourseentity';
+import { StudentCourseService } from './studentCourse.service';
 
 @Module({
   controllers: [],
@@ -9,6 +10,8 @@ import { StudentCourse } from './studentCourseentity';
       provide: studentCourseRepositry,
       useValue: StudentCourse,
     },
+    StudentCourseService,
   ],
+  exports: [StudentCourseService],
 })
 export class StudentCourseModule {}

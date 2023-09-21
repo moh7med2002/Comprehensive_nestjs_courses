@@ -16,6 +16,8 @@ import { MediaModule } from './modules/media/media.module';
 import { HintModule } from './modules/hint/hint.module';
 import { StudentCourseModule } from './modules/studentCourse/studentCourse.module';
 import { QuizModule } from './modules/quiz/quiz.module';
+import { QuestionModule } from './modules/queston/question.module';
+import { AnswerModule } from './modules/answer/answer.module';
 
 @Module({
   imports: [
@@ -38,6 +40,8 @@ import { QuizModule } from './modules/quiz/quiz.module';
     HintModule,
     StudentCourseModule,
     QuizModule,
+    QuestionModule,
+    AnswerModule,
   ],
   controllers: [AppController],
 })
